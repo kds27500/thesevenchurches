@@ -10,3 +10,20 @@
 
 /* Keep visual presentation uncluttered; metadata remains accessible on demand. */
 .sceneMediaNotes{background:#102b34;color:#cbd7d6;padding:10px 18px;border-top:1px solid #415860;font-size:12px}.sceneMediaNotes summary{cursor:pointer;color:#d3b474}.sceneMediaNotes p{margin:6px 0}.stillPicture .stillCaption{display:none}.stillPicture img{max-width:100%}
+
+/* Eden artwork: show every edge of the original 16:9 image while extending
+   the surrounding stage with a softly blurred copy instead of cropping it. */
+.stillPicture:has(img[src*="EPH-IMG-P1"]){
+  position:relative;isolation:isolate;display:flex;align-items:center;
+  justify-content:center;min-height:440px;height:100%;overflow:hidden;
+  background:#102b34;
+}
+.stillPicture:has(img[src*="EPH-IMG-P1"])::before{
+  content:"";position:absolute;inset:-22px;z-index:-1;
+  background:url('/images/ephesus/EPH-IMG-P1.jpg') center/cover no-repeat;
+  filter:blur(24px) brightness(.58);transform:scale(1.06);
+}
+.stillPicture img[src*="EPH-IMG-P1"]{
+  width:100%;height:auto;max-height:100%;min-height:0;
+  object-fit:contain;object-position:center;display:block;
+}
