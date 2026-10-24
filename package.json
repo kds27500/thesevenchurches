@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "npm run prepare:content && vite build",
+    "preview": "vite preview",
+    "prepare:content": "unzip -oq efiles/repo_files_for_github.zip -d ."
   },
   "dependencies": {
     "react": "^19.0.0",
